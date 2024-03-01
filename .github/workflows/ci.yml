@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-11]
+        os: [macos-latest]
         qt_version: [6.5.2]  # 6.2.4
 
     runs-on: ${{ matrix.os }}
@@ -126,7 +126,7 @@ jobs:
         run: ./dist/macos/generate_appcast_item.sh "build/Albert-${{ github.ref_name }}.dmg" "${VERSION:1}" "$EDDSA_PRIVATE_KEY" appcast_item.txt
 
       - uses: actions/upload-artifact@v3
-        if: matrix.os == 'macos-11' # only lowest os
+        if: matrix.os == 'macos-latest' # only latest os
         with:
           name: macos-release-artifacts
           path: |
